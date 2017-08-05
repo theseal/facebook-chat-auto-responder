@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const login = require('facebook-chat-api');
 const config = require('./config');
-const readline = require("readline");
 const fs = require("fs");
+const login = require('facebook-chat-api');
+const readline = require("readline");
 const readlineSync = require('readline-sync');
 
 let answeredThreads = {};
