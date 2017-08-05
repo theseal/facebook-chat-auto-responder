@@ -4,6 +4,7 @@ const login = require('facebook-chat-api');
 const config = require('./config');
 const readline = require("readline");
 const fs = require("fs");
+const readlineSync = require('readline-sync');
 
 let answeredThreads = {};
 
@@ -14,15 +15,16 @@ let rl = readline.createInterface({
 
 const reply_message = config.reply_message;
 const email = config.email;
-const password = config.password;
 const cookiejar = "./cookiejar.json"
 
 
-if (!fs.existsSync(cookiejar)) {
-        login({
-                email: email,
-                password: password
-        }, function callback(loginerr, api) {
+if (process.argv[2] === "login") {
+    let password = readlineSync.question('Enter your Facebook password: ');
+
+    login(
+            { email: email, password: password },
+            { forceLogin: true },
+            function callback(loginerr, api) {
                 if(loginerr) {
                     switch (loginerr.error) {
                         case 'login-approval':
@@ -38,15 +40,17 @@ if (!fs.existsSync(cookiejar)) {
                 } else {
                     console.log("Login succesful, saving state to \"cookiejar\".");
                     fs.writeFileSync(cookiejar, JSON.stringify(api.getAppState()));
-                    facebook();
+                    console.log("Please run command again without \"login\".");
+                    process.exit()
                 };
-        });
+            }
+    );
 } else {
     facebook();
 };
 
 function facebook() {
-    login({appState: JSON.parse(fs.readFileSync(cookiejar, 'utf8'))}, (err, api) => {
+    login({appState: JSON.parse(fs.readFileSync(cookiejar, 'utf8'))},{ forceLogin: true }, (err, api) => {
         if(err) return console.error(err);
         api.listen(function callback(err, message) {
             var timestamp = '[' + Date.now() + '] ';

@@ -1,5 +1,4 @@
 module.exports = {
     email: "GLaDOS@aperturelaboratories.com",
-    password: "impressive",
     reply_message: "The cake is a lie!"
 };
