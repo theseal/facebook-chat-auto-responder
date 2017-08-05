@@ -45,8 +45,11 @@ if (process.argv[2] === "login") {
                 };
             }
     );
-} else {
+} else if (fs.existsSync(cookiejar)) {
     facebook();
+} else {
+    console.log("You need to login first, please run again with \"login\" as argument.");
+    process.exit(1);
 };
 
 function facebook() {
