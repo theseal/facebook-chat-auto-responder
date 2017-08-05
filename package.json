@@ -1,6 +1,6 @@
 {
   "name": "facebook-chat-auto-responder",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Yet another Facebook Auto Responder?",
   "main": "index.js",
   "author": "Johan Carlquist <johan@rymdvarel.se>",
