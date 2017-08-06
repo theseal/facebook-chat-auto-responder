@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+
+ABSOLUTE_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+service="facebook-chat-auto-responder"
+service_file="${service}.service"
+
+sed \
+    -e "s,%%ABSOLUTE_PATH%%,${ABSOLUTE_PATH}," \
+    ${ABSOLUTE_PATH}/${service_file}.in \
+    > /etc/systemd/system/${service_file}
+
+systemctl enable ${service}
+systemctl start ${service}
+

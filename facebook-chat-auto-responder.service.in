@@ -1,0 +1,10 @@
+[Unit]
+Description=Facebook chat auto responder
+
+[Service]
+Restart=always
+RestartSec=60
+ExecStart=%%ABSOLUTE_PATH%%/index.js
+
+[Install]
+WantedBy=multi-user.target
