@@ -15,7 +15,8 @@ v6.11.0
 * Clone this repo
 * `npm install`
 * `$EDITOR ./config`
-* `./index.js` (preferable in screen or tmux, for now™)
+* `./index.js login` to login and create your cookiejar.
+* Enable and run with systemd `./systemd-enabler` or just run `./index.js` (preferable in screen or tmux)
 
 # Caveats
 * If you have Facebook set to require 2FA you need to enter a code at the first launch.
