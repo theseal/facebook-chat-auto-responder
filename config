@@ -1,4 +1,4 @@
 module.exports = {
-    email: "GLaDOS@aperturelaboratories.com",
-    reply_message: "The cake is a lie!"
+    email: "johan@rymdvarel.se",
+    reply_message: "Hej och välkommen till Johans automagiska Facebook-svarare. Välkomen försök igen på annat chat-medium."
 };
